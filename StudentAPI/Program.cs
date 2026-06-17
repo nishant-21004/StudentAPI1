@@ -22,7 +22,6 @@ namespace StudentAPI
 
             builder.Services.AddScoped<StudentServices>();
 
-            // JWT Authentication
             builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                 {

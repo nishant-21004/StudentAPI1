@@ -22,7 +22,7 @@ namespace StudentAPI.Controllers
             this.configuration = configuration;
         }
 
-
+        
         [HttpPost("Register")]
         public async Task<IActionResult> Register(Register register)
         {

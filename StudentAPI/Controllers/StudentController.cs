@@ -6,6 +6,7 @@ using StudentAPI.Services;
 
 namespace StudentAPI.Controllers
 {
+    [Authorize(Roles  = "User")]
     [Route("api/[controller]")]
     [ApiController]
     public class StudentController : ControllerBase
@@ -13,19 +14,35 @@ namespace StudentAPI.Controllers
         private readonly StudentDBContext _context;
         private readonly StudentServices _studentServices;
 
-        public StudentController(
-            StudentDBContext context,
-            StudentServices studentServices)
+
+    public StudentController(
+        StudentDBContext context,
+        StudentServices studentServices)
         {
             _context = context;
             _studentServices = studentServices;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll(
+    int pageNumber = 1,
+    int pageSize = 10)
         {
-            var students = await _context.Students.ToListAsync();
-            return Ok(students);
+            var totalRecords = await _context.Students.CountAsync();
+
+            var students = await _context.Students
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return Ok(new
+            {
+                TotalRecords = totalRecords,
+                PageNumber = pageNumber,
+                PageSize = pageSize,
+                TotalPages = (int)Math.Ceiling((double)totalRecords / pageSize),
+                Data = students
+            });
         }
 
         [HttpGet("{id}")]
@@ -80,7 +97,6 @@ namespace StudentAPI.Controllers
             return Ok("Student deleted successfully");
         }
 
-        [Authorize(Roles = "User")]
         [HttpGet("export")]
         public async Task<IActionResult> Export()
         {
@@ -92,4 +108,6 @@ namespace StudentAPI.Controllers
                 "Students.xlsx");
         }
     }
+
+
 }
