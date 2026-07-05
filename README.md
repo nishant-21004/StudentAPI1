@@ -106,7 +106,7 @@ StudentManagementUI
 ### Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git
+git clone https://github.com/nishant-21004/StudentAPI1.git
 ```
 
 ### Open Solution
