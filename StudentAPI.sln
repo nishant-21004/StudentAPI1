@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentAPI", "StudentAPI\St
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentAPI.Tests", "StudentAPI.Tests\StudentAPI.Tests.csproj", "{C6BEF51B-AAC7-46DA-95C3-45B88584882A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentManagementUI", "StudentManagementUI\StudentManagementUI.csproj", "{C9526541-05AF-4FC8-A872-193EC522350E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,18 @@ Global
 		{C6BEF51B-AAC7-46DA-95C3-45B88584882A}.Release|x64.Build.0 = Release|Any CPU
 		{C6BEF51B-AAC7-46DA-95C3-45B88584882A}.Release|x86.ActiveCfg = Release|Any CPU
 		{C6BEF51B-AAC7-46DA-95C3-45B88584882A}.Release|x86.Build.0 = Release|Any CPU
+		{C9526541-05AF-4FC8-A872-193EC522350E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9526541-05AF-4FC8-A872-193EC522350E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9526541-05AF-4FC8-A872-193EC522350E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C9526541-05AF-4FC8-A872-193EC522350E}.Debug|x64.Build.0 = Debug|Any CPU
+		{C9526541-05AF-4FC8-A872-193EC522350E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C9526541-05AF-4FC8-A872-193EC522350E}.Debug|x86.Build.0 = Debug|Any CPU
+		{C9526541-05AF-4FC8-A872-193EC522350E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9526541-05AF-4FC8-A872-193EC522350E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9526541-05AF-4FC8-A872-193EC522350E}.Release|x64.ActiveCfg = Release|Any CPU
+		{C9526541-05AF-4FC8-A872-193EC522350E}.Release|x64.Build.0 = Release|Any CPU
+		{C9526541-05AF-4FC8-A872-193EC522350E}.Release|x86.ActiveCfg = Release|Any CPU
+		{C9526541-05AF-4FC8-A872-193EC522350E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

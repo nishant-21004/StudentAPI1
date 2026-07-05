@@ -25,12 +25,54 @@ namespace StudentAPI.Controllers
 
         [HttpGet]
         public async Task<IActionResult> GetAll(
-    int pageNumber = 1,
-    int pageSize = 10)
+      string? name,
+      string? email,
+      string? gender,
+      string? phone,
+      string? address,
+      int pageNumber = 1,
+      int pageSize = 10)
         {
-            var totalRecords = await _context.Students.CountAsync();
+            var query = _context.Students.AsQueryable();
 
-            var students = await _context.Students
+            // Name Filter (FirstName + LastName)
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                query = query.Where(s =>
+                    s.FirstName.Contains(name) ||
+                    s.LastName.Contains(name) ||
+                    (s.FirstName + " " + s.LastName).Contains(name));
+            }
+
+            // Email Filter
+            if (!string.IsNullOrWhiteSpace(email))
+            {
+                query = query.Where(s => s.Email.Contains(email));
+            }
+
+            // Gender Filter
+            if (!string.IsNullOrWhiteSpace(gender))
+            {
+                query = query.Where(s => s.Gender == gender);
+            }
+
+            // Phone Filter
+            if (!string.IsNullOrWhiteSpace(phone))
+            {
+                query = query.Where(s => s.Phone.Contains(phone));
+            }
+
+            // Address Filter
+            if (!string.IsNullOrWhiteSpace(address))
+            {
+                query = query.Where(s => s.Address.Contains(address));
+            }
+
+            // Total records after filtering
+            var totalRecords = await query.CountAsync();
+
+            // Pagination
+            var students = await query
                 .Skip((pageNumber - 1) * pageSize)
                 .Take(pageSize)
                 .ToListAsync();

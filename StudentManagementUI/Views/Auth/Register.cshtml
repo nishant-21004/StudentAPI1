@@ -1,0 +1,87 @@
+﻿@model StudentManagementUI.Models.User
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container-fluid vh-100 d-flex justify-content-center align-items-center bg-light">
+    <div class="row w-100 justify-content-center">
+        <div class="col-md-5 col-lg-4">
+
+            
+            <div class="card border-0 shadow-lg rounded-4">
+                <div class="card-body p-5">
+
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold text-success">Create Account</h2>
+                        <p class="text-muted">Register to continue</p>
+                    </div>
+
+                    <form asp-action="Register" asp-controller="Auth" method="post">
+
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label fw-semibold"></label>
+                            <input asp-for="Name"
+                                   class="form-control form-control-lg"
+                                   placeholder="Enter your name" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label fw-semibold"></label>
+                            <input asp-for="Email"
+                                   class="form-control form-control-lg"
+                                   placeholder="Enter your email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Password" class="form-label fw-semibold"></label>
+                            <input asp-for="Password"
+                                   type="password"
+                                   class="form-control form-control-lg"
+                                   placeholder="Enter your password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        @if (ViewBag.Error != null)
+                        {
+                            <div class="alert alert-danger">
+                                @ViewBag.Error
+                            </div>
+                        }
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                Register
+                            </button>
+                        </div>
+
+                    </form>
+
+                    <hr class="my-4" />
+
+                    <div class="text-center">
+                        <span class="text-muted">Already have an account?</span>
+                        <a asp-action="Login"
+                           asp-controller="Auth"
+                           class="text-decoration-none fw-bold ms-1">
+                            Login Here
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+
+</div>
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
