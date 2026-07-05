@@ -171,7 +171,7 @@ StudentManagementUI
 
 **Nishant Singh**
 
-GitHub: https://github.com/YOUR_USERNAME
+GitHub: https://github.com/nishant-21004
 
 ---
 
